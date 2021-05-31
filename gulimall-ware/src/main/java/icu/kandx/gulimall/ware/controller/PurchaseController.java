@@ -17,7 +17,7 @@ import java.util.Map;
  *
  * @author Shaodi.kou
  * @email 79649931@qq.com
- * @date 2021-05-26 09:45:30
+ * @date 2021-05-28 09:36:44
  */
 @RestController
 @RequestMapping("ware/purchase")
@@ -28,8 +28,9 @@ public class PurchaseController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
-        public R list(@RequestParam Map<String, Object> params){
+    @GetMapping("/list")
+    //@RequiresPermissions("ware:purchase:list")
+    public R list(@RequestParam Map<String, Object> params){
         PageUtils page = purchaseService.queryPage(params);
 
         return R.ok().put("page", page);
@@ -39,8 +40,9 @@ public class PurchaseController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
-        public R info(@PathVariable("id") Long id){
+    @GetMapping("/info/{id}")
+    //@RequiresPermissions("ware:purchase:info")
+    public R info(@PathVariable("id") Long id){
 		PurchaseEntity purchase = purchaseService.getById(id);
 
         return R.ok().put("purchase", purchase);
@@ -49,8 +51,9 @@ public class PurchaseController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
-        public R save(@RequestBody PurchaseEntity purchase){
+    @PostMapping("/save")
+    //@RequiresPermissions("ware:purchase:save")
+    public R save(@RequestBody PurchaseEntity purchase){
 		purchaseService.save(purchase);
 
         return R.ok();
@@ -59,8 +62,9 @@ public class PurchaseController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
-        public R update(@RequestBody PurchaseEntity purchase){
+    @PutMapping("/update")
+    //@RequiresPermissions("ware:purchase:update")
+    public R update(@RequestBody PurchaseEntity purchase){
 		purchaseService.updateById(purchase);
 
         return R.ok();
@@ -69,8 +73,9 @@ public class PurchaseController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
-        public R delete(@RequestBody Long[] ids){
+    @DeleteMapping("/delete")
+    //@RequiresPermissions("ware:purchase:delete")
+    public R delete(@RequestBody Long[] ids){
 		purchaseService.removeByIds(Arrays.asList(ids));
 
         return R.ok();

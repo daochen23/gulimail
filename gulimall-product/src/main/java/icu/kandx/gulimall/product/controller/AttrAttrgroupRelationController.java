@@ -17,7 +17,7 @@ import java.util.Map;
  *
  * @author Shaodi.kou
  * @email 79649931@qq.com
- * @date 2021-05-25 18:37:40
+ * @date 2021-05-28 09:39:15
  */
 @RestController
 @RequestMapping("product/attrattrgrouprelation")
@@ -28,8 +28,9 @@ public class AttrAttrgroupRelationController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
-        public R list(@RequestParam Map<String, Object> params){
+    @GetMapping("/list")
+    //@RequiresPermissions("product:attrattrgrouprelation:list")
+    public R list(@RequestParam Map<String, Object> params){
         PageUtils page = attrAttrgroupRelationService.queryPage(params);
 
         return R.ok().put("page", page);
@@ -39,8 +40,9 @@ public class AttrAttrgroupRelationController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
-        public R info(@PathVariable("id") Long id){
+    @GetMapping("/info/{id}")
+    //@RequiresPermissions("product:attrattrgrouprelation:info")
+    public R info(@PathVariable("id") Long id){
 		AttrAttrgroupRelationEntity attrAttrgroupRelation = attrAttrgroupRelationService.getById(id);
 
         return R.ok().put("attrAttrgroupRelation", attrAttrgroupRelation);
@@ -49,8 +51,9 @@ public class AttrAttrgroupRelationController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
-        public R save(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
+    @PostMapping("/save")
+    //@RequiresPermissions("product:attrattrgrouprelation:save")
+    public R save(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
 		attrAttrgroupRelationService.save(attrAttrgroupRelation);
 
         return R.ok();
@@ -59,8 +62,9 @@ public class AttrAttrgroupRelationController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
-        public R update(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
+    @PutMapping("/update")
+    //@RequiresPermissions("product:attrattrgrouprelation:update")
+    public R update(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
 		attrAttrgroupRelationService.updateById(attrAttrgroupRelation);
 
         return R.ok();
@@ -69,8 +73,9 @@ public class AttrAttrgroupRelationController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
-        public R delete(@RequestBody Long[] ids){
+    @DeleteMapping("/delete")
+    //@RequiresPermissions("product:attrattrgrouprelation:delete")
+    public R delete(@RequestBody Long[] ids){
 		attrAttrgroupRelationService.removeByIds(Arrays.asList(ids));
 
         return R.ok();

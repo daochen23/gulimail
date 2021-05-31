@@ -12,7 +12,7 @@ import lombok.Data;
  * 
  * @author Shaodi.kou
  * @email 79649931@qq.com
- * @date 2021-05-26 09:45:30
+ * @date 2021-05-28 09:36:44
  */
 @Data
 @TableName("wms_ware_order_task_detail")

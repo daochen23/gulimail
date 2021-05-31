@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
  * 
  * @author Shaodi.kou
  * @email 79649931@qq.com
- * @date 2021-05-26 09:21:10
+ * @date 2021-05-28 09:44:04
  */
 @Mapper
 public interface CouponSpuCategoryRelationDao extends BaseMapper<CouponSpuCategoryRelationEntity> {

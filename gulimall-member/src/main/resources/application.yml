@@ -2,18 +2,8 @@ server:
   port: 8000
 
 spring:
-  datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://192.168.148.103:3306/gulimall_ums
-    driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
       discovery:
         server-addr: 192.168.148.103:8848
-        service: gulimall-member
-mybatis-plus:
-  mapper-locations: classpath:/mapper/**/*.xml
-  global-config:
-    db-config:
-      id-type: auto
+        service: gulimall-gateway
